@@ -143,6 +143,14 @@ h1 {
   padding: 0.5rem;
 }
 
+.no-items {
+  display: block;
+  text-align: center;
+  padding: 20px;
+  font-size: 36px;
+  color: #333;
+}
+
 .reset-button {
   background-color: white;
   border-radius: 20px;
