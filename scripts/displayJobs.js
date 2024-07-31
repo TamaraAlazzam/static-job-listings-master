@@ -4,8 +4,8 @@ export function displayJobs(jobs) {
 
   if (jobs.length === 0) {
     const noItemsMessage = document.createElement("div");
-    noItemsMessage.classList.add("no-items");
-    noItemsMessage.textContent = "No items found";
+    noItemsMessage.classList.add("no-jobs");
+    noItemsMessage.textContent = "No Jobs found, please change the filter";
     jobListings.appendChild(noItemsMessage);
     return;
   }

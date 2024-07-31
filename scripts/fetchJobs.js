@@ -7,6 +7,9 @@ export async function fetchJobs() {
 
   try {
     const response = await fetch("./data.json");
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const data = await response.json();
     cachedJobs = data;
     return data;

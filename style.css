@@ -36,8 +36,8 @@ body {
 }
 
 .filter-category label {
-  display: flex;
   align-items: center;
+  display: flex;
   margin-bottom: 0.5rem;
 }
 
@@ -85,7 +85,7 @@ h1 {
   color: #888;
   display: flex;
   font-size: 0.9rem;
-  width: 120%;
+  width: 100vw;
 }
 
 .job-details span {
@@ -126,11 +126,10 @@ h1 {
 }
 
 .job-tags {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  align-items: center;
-
   width: 100%;
 }
 
@@ -143,7 +142,7 @@ h1 {
   padding: 0.5rem;
 }
 
-.no-items {
+.no-jobs {
   color: #333;
   font-size: 36px;
   padding: 20px;
