@@ -59,7 +59,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         filterTags.innerHTML = '';
         filter.style.padding = "0";
         filter.style.width = "0";
-        filter.innerHTML='';
+        // filter.innerHTML='';
+        clear.remove();
         selectedFilters = [];
         filterJobListings();
       });

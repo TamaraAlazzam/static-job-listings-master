@@ -1,18 +1,30 @@
+:root{
+    --arialFont : 'Arial, sans-serif';
+    --white:  White;
+    --blue: #164966;
+    --lightBlue: #f0f7f8;
+    --turquise: #5da5a4;
+    --darkBlue: rgb(1, 68, 85);
+    --blackShadow: rgba(0, 0, 0, 0.3);
+    --grey: #999;
+
+
+}
 body {
     align-items: center;
-    background-color: #f0f7f8;
+    background-color: var(--lightBlue) ;
     display: flex;
     flex-direction: column;
-    font-family: Arial, sans-serif;
+    font-family: var(--arialFont);
     justify-content: center;
     margin: 0;
     padding: 0;
   }
 
   .clear{
-    background-color: white;
+    background-color: var(--white);
     border: none;
-    color: #164966;
+    color: var(--blue);
     font-size: 18px;
     
   }
@@ -23,7 +35,7 @@ body {
   }
   
   .company-name h2 {
-    color: #164966;
+    color: var(--blue);
     font-size: 20px;
     margin: 0;
   }
@@ -36,10 +48,10 @@ body {
   }
 
   .delete-button{
-    background-color: #5da5a4;
+    background-color: var(--turquise) ;
     border-radius: 1px;
     border: none;
-    color: white;
+    color: var(--white);
     font-size: 14px;
     margin-bottom: 10px;
     margin-left: -10px;
@@ -52,18 +64,18 @@ body {
 
   .featured {
     background-color: #2c3a3e;
-    color: white;
+    color: var(--white);
   }
 
   .filter-tags{
-    background-color: white;
+    background-color: var(--white);
     display: flex;
     flex-direction: row;
     justify-content: start;
   }
 
   .header{
-    background-color: #5da5a4;
+    background-color: var(--turquise);
     background-image: url('images/bg-header-desktop.svg');
     height: 100px;
     width: 100%;
@@ -76,9 +88,9 @@ body {
   
   .job-listing {
     align-items: center;
-    background-color: white;
+    background-color: var(--white);
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px var(--blackShadow);
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
@@ -87,7 +99,7 @@ body {
   }
 
   .job-listing:active{
-    border-left: 10px solid rgb(1, 68, 85) ;
+    border-left: 10px solid var(--darkBlue) ;
   }
   
   .job-listing img {
@@ -105,7 +117,7 @@ body {
   }
 
   .job-filter{
-    background-color: white;
+    background-color: var(--white);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -119,7 +131,7 @@ body {
   }
   
   .job-details p {
-    color: #999;
+    color: var(--grey);
     margin: 5px 0;
   }
 
@@ -130,8 +142,8 @@ body {
   }
  
   .new {
-    background-color: #5da5a4;
-    color: white;
+    background-color: var(--turquise);
+    color: var(--white);
   }
   
  
@@ -142,9 +154,9 @@ body {
   }
   
   .tag {
-    background-color: #eef6f7;
+    background-color: var(--lightBlue);
     border-radius: 5px;
-    color: #5da5a4;
+    color: var(--turquise);
     font-size: 14px;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -152,7 +164,7 @@ body {
   }
 
   .tag:hover{
-    background-color: #164966;
+    background-color: var(--darkBlue);
   }
 
 
@@ -170,7 +182,7 @@ body {
 
     }
     .job-details{
-        border-bottom: 1px solid rgb(175, 162, 162);
+        border-bottom: 1px solid var(--grey);
     }
     .header{
         background-image: url('images/bg-header-mobile.svg');
