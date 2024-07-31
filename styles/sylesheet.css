@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+
+:root {
+    --parimary-color: hsl(180, 29%, 50%);
+    --background-color: hsl(180, 52%, 96%);
+    --filtertable-color: hsl(180, 31%, 100%);
+    --darkgrayish-color: hsl(180, 8%, 52%);
+    --verydarkgrayish-color: hsl(180, 14%, 20%);
+}
+
+body {
+    background-color: var(--background-color);
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 15px;
+    font-family: "League Spartan", sans-serif;
+    font-weight: 400;
+}
+
+.nav {
+    background-color: var(--parimary-color);
+    background-image: url("../images/bg-header-desktop.svg");
+    min-height: 100px;
+}
+
+.search_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--filtertable-color);
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    height: 100px;
+    margin-top: -50px;
+
+}
+
+.search_bar {
+    display: flex;
+}
+
+#full_clear {
+    font-weight: 600;
+    color: var(--parimary-color);
+    width: fit-content;
+    border: none;
+    background-color: transparent;
+}
+
+#full_clear:hover {
+    cursor: pointer;
+    border-bottom: 2px solid var(--parimary-color);
+
+}
+
+.search_bar button {
+    font-weight: 600;
+    color: white;
+    font-size: large;
+    width: fit-content;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    background-color: var(--parimary-color);
+}
+
+.search_bar button:hover {
+    background-color: var(--verydarkgrayish-color);
+}
+
+.search_bar span {
+    border: 1px solid transparent;
+    display: inline-block;
+    text-align: center;
+    width: fit-content;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--background-color);
+    color: var(--parimary-color);
+}
+
+.specialities button {
+    font-weight: 600;
+    color: var(--parimary-color);
+    width: fit-content;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: var(--background-color);
+    margin-left: 5px;
+}
+
+.specialities button:hover {
+    cursor: pointer;
+    background-color: var(--parimary-color);
+    color: var(--background-color);
+}
+
+.container {
+
+    padding-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.job-cards {
+    display: grid;
+    grid-template-columns: auto 1fr 2fr;
+    align-items: center;
+    box-shadow: 0px 5px 17px -3px var(--parimary-color);
+    border-radius: 5px;
+    margin: 10px;
+    padding: 15px;
+    height: 120px;
+    background-color: var(--filtertable-color);
+}
+
+.featured-job {
+    border-left: 5px solid hsl(180, 29%, 50%);
+}
+
+.job-cards img {
+    padding: 5px;
+    margin: 5px;
+}
+
+.job-cards .specialities {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.job-cards .information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h3:hover {
+    cursor: pointer;
+    color: var(--parimary-color);
+}
+
+.company {
+    color: var(--parimary-color);
+    font-weight: 600;
+}
+
+.primary_span {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: 600;
+    text-align: center;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: var(--parimary-color);
+    color: white;
+}
+
+.dark_span {
+    font-weight: 600;
+    text-align: center;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: var(--verydarkgrayish-color);
+    color: white;
+}
+
+.submit_time {
+    color: grey;
+    font-weight: 600;
+}
+
+@media (max-width: 465px) {
+    .nav {
+        background-image: url("/images/bg-header-mobile.svg");
+        width: 100%;
+    }
+
+    .container {
+
+        padding-top: 50px;
+        width: 400px;
+    }
+
+    .job-cards {
+        grid-template-columns: auto;
+        height: 300px;
+        margin-bottom: 56px;
+    }
+
+    .job-cards img {
+        padding: inherit;
+        margin-top: -100px;
+    }
+
+    .job-cards .information {
+        margin-top: -45px;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .job-cards .specialities {
+        border-top: 1px solid grey;
+        display: block;
+        padding-top: 30px;
+    }
+
+    .search_container {
+        width: 325px;
+    }
+
+    .specialities button {
+        margin: 5px;
+    }
+}
