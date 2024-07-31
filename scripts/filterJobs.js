@@ -1,4 +1,5 @@
 import { displayJobs } from "./displayJobs.js";
+import { updateFilterIcons } from "./filterIcons.js";
 
 let jobs = [];
 
@@ -25,18 +26,23 @@ export function applyFilters() {
     filterCriteria[type].push(filter.value);
   });
 
+  updateFilterIcons(filterCriteria); // Update filter icons
+
   const filteredJobs = jobs.filter((job) => {
     const roleMatch =
       filterCriteria.role.length === 0 ||
       filterCriteria.role.includes(job.role) ||
       filterCriteria.role.includes("Any");
+
     const levelMatch =
       filterCriteria.level.length === 0 ||
       filterCriteria.level.includes(job.level) ||
       filterCriteria.level.includes("Any");
+
     const languagesMatch =
       filterCriteria.languages.length === 0 ||
       filterCriteria.languages.every((lang) => job.languages.includes(lang));
+
     const toolsMatch =
       filterCriteria.tools.length === 0 ||
       filterCriteria.tools.every((tool) => job.tools.includes(tool));
@@ -59,4 +65,6 @@ export function resetFilters() {
   document.querySelectorAll('input[value="Any"]').forEach((radio) => {
     radio.checked = true;
   });
+
+  applyFilters(); // Reapply filters to update the display
 }

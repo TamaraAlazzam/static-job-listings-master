@@ -52,6 +52,47 @@ h1 {
   margin: 0;
 }
 
+.icon-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: auto;
+  max-width: 1200px;
+  padding: 1rem;
+}
+
+.filter-icon {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #5cb85c;
+  display: flex;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-size: 18px;
+  margin: 0.25rem;
+  padding: 8px 16px;
+  padding: 0.5rem;
+}
+
+.remove-icon {
+  align-items: center;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  font-size: 12px;
+  height: 20px;
+  justify-content: center;
+  margin-left: 8px;
+  width: 20px;
+}
+
+.remove-icon:hover {
+  background: #5cb85c;
+}
+
 .job-card {
   background-color: #fff;
   border-radius: 5px;
@@ -85,7 +126,7 @@ h1 {
   color: #888;
   display: flex;
   font-size: 0.9rem;
-  width: 100vw;
+  width: 25vw;
 }
 
 .job-details span {
