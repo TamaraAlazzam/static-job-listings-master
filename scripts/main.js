@@ -1,21 +1,10 @@
 import { fetchJobs } from "./fetchJobs.js";
 import { displayJobs } from "./displayJobs.js";
-import { resetFilters, initializeFilters } from "./filterJobs.js";
-
-let jobs = [];
+import { initializeFilters } from "./filterJobs.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetchJobs().then((data) => {
-    jobs = data;
+  fetchJobs().then((jobs) => {
     displayJobs(jobs);
     initializeFilters(jobs);
   });
-
-  const resetButton = document.querySelector('button[type="reset"]');
-  if (resetButton) {
-    resetButton.addEventListener("click", () => {
-      resetFilters();
-      displayJobs(jobs);
-    });
-  }
 });

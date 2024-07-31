@@ -3,41 +3,37 @@ import { updateFilterIcons } from "./filterIcons.js";
 
 let jobs = [];
 
+export const filterCriteria = {
+  role: [],
+  level: [],
+  languages: [],
+  tools: [],
+};
+
 export function initializeFilters(fetchedJobs) {
   jobs = fetchedJobs;
-
-  const filters = document.querySelectorAll(".filter");
-  filters.forEach((filter) => {
-    filter.addEventListener("change", applyFilters);
-  });
+  const resetButton = document.querySelector(".reset-button");
+  if (resetButton) {
+    resetButton.addEventListener("click", () => {
+      resetFilters();
+      fetchedJobs.then((jobs) => {
+        displayJobs(jobs);
+      });
+    });
+  }
 }
 
 export function applyFilters() {
-  const filters = document.querySelectorAll(".filter:checked");
-  const filterCriteria = {
-    role: [],
-    level: [],
-    languages: [],
-    tools: [],
-  };
-
-  filters.forEach((filter) => {
-    const type = filter.getAttribute("data-filter-type");
-    filterCriteria[type].push(filter.value);
-  });
-
-  updateFilterIcons(filterCriteria);
+  updateFilterIcons();
 
   const filteredJobs = jobs.filter((job) => {
     const roleMatch =
       filterCriteria.role.length === 0 ||
-      filterCriteria.role.includes(job.role) ||
-      filterCriteria.role.includes("Any");
+      filterCriteria.role.includes(job.role);
 
     const levelMatch =
       filterCriteria.level.length === 0 ||
-      filterCriteria.level.includes(job.level) ||
-      filterCriteria.level.includes("Any");
+      filterCriteria.level.includes(job.level);
 
     const languagesMatch =
       filterCriteria.languages.length === 0 ||
@@ -54,17 +50,8 @@ export function applyFilters() {
 }
 
 export function resetFilters() {
-  document.querySelectorAll('.filter[type="checkbox"]').forEach((checkbox) => {
-    checkbox.checked = false;
+  Object.keys(filterCriteria).forEach((key) => {
+    filterCriteria[key] = [];
   });
-
-  document.querySelectorAll('.filter[type="radio"]').forEach((radio) => {
-    radio.checked = false;
-  });
-
-  document.querySelectorAll('input[value="Any"]').forEach((radio) => {
-    radio.checked = true;
-  });
-
   applyFilters();
 }

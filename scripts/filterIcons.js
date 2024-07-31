@@ -1,33 +1,16 @@
-import { applyFilters, resetFilters } from "./filterJobs.js";
+import { applyFilters, resetFilters, filterCriteria } from "./filterJobs.js";
 
-export function updateFilterIcons(filterCriteria) {
+export function updateFilterIcons() {
   const iconTags = document.querySelector(".icon-tags");
   iconTags.innerHTML = "";
 
   let hasActiveFilters = false;
 
-  filterCriteria.role.forEach((role) => {
-    if (role !== "Any") {
-      addFilterIcon(iconTags, role, "role");
+  Object.keys(filterCriteria).forEach((type) => {
+    filterCriteria[type].forEach((value) => {
+      addFilterIcon(iconTags, value, type);
       hasActiveFilters = true;
-    }
-  });
-
-  filterCriteria.level.forEach((level) => {
-    if (level !== "Any") {
-      addFilterIcon(iconTags, level, "level");
-      hasActiveFilters = true;
-    }
-  });
-
-  filterCriteria.languages.forEach((language) => {
-    addFilterIcon(iconTags, language, "languages");
-    hasActiveFilters = true;
-  });
-
-  filterCriteria.tools.forEach((tool) => {
-    addFilterIcon(iconTags, tool, "tools");
-    hasActiveFilters = true;
+    });
   });
 
   if (hasActiveFilters) {
@@ -55,25 +38,11 @@ function addFilterIcon(container, value, type) {
 }
 
 function removeFilter(value, type) {
-  const filters = document.querySelectorAll(
-    `.filter[data-filter-type="${type}"]`
-  );
-  filters.forEach((filter) => {
-    if (filter.value === value) {
-      filter.checked = false;
-    }
-  });
-
-  if (type === "role" || type === "level") {
-    const anyFilter = document.querySelector(
-      `.filter[data-filter-type="${type}"][value="Any"]`
-    );
-    if (anyFilter) {
-      anyFilter.checked = true;
-    }
+  const index = filterCriteria[type].indexOf(value);
+  if (index !== -1) {
+    filterCriteria[type].splice(index, 1);
+    applyFilters();
   }
-
-  applyFilters();
 }
 
 function addResetIcon(container) {
