@@ -1,28 +1,41 @@
-import { applyFilters } from "./filterJobs.js";
+import { applyFilters, resetFilters } from "./filterJobs.js";
 
 export function updateFilterIcons(filterCriteria) {
   const iconTags = document.querySelector(".icon-tags");
   iconTags.innerHTML = "";
 
+  let hasActiveFilters = false;
+
   filterCriteria.role.forEach((role) => {
     if (role !== "Any") {
       addFilterIcon(iconTags, role, "role");
+      hasActiveFilters = true;
     }
   });
 
   filterCriteria.level.forEach((level) => {
     if (level !== "Any") {
       addFilterIcon(iconTags, level, "level");
+      hasActiveFilters = true;
     }
   });
 
   filterCriteria.languages.forEach((language) => {
     addFilterIcon(iconTags, language, "languages");
+    hasActiveFilters = true;
   });
 
   filterCriteria.tools.forEach((tool) => {
     addFilterIcon(iconTags, tool, "tools");
+    hasActiveFilters = true;
   });
+
+  if (hasActiveFilters) {
+    addResetIcon(iconTags);
+    iconTags.style.backgroundColor = "white";
+  } else {
+    iconTags.style.backgroundColor = "#f0fafb";
+  }
 }
 
 function addFilterIcon(container, value, type) {
@@ -61,4 +74,16 @@ function removeFilter(value, type) {
   }
 
   applyFilters();
+}
+
+function addResetIcon(container) {
+  const resetIcon = document.createElement("div");
+  resetIcon.className = "filter-icon reset-icon";
+  resetIcon.innerText = "Reset";
+
+  resetIcon.addEventListener("click", () => {
+    resetFilters();
+  });
+
+  container.appendChild(resetIcon);
 }

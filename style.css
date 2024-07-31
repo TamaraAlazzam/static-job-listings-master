@@ -76,13 +76,21 @@ header {
   transition: visibility 0.3s;
 }
 
+.filter-icon.reset-icon {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
 .icon-tags {
+  align-items: center;
+  background-color: var(--bg-color);
+  border-radius: 12px;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  height: 75px;
   margin: auto;
   max-width: 1200px;
+  min-height: 75px;
   padding: 1rem;
 }
 
@@ -96,7 +104,6 @@ header {
   cursor: pointer;
   display: flex;
   font-family: Arial, sans-serif;
-  font-size: 14px;
   font-size: 18px;
   margin: 0.25rem;
   padding: 8px 16px;
@@ -104,7 +111,7 @@ header {
 }
 
 .filter-icon {
-  background-color: var(--white-color);
+  background-color: var(--bg-color);
 }
 
 .filter-icon:hover,
@@ -220,8 +227,13 @@ header {
   padding: 20px;
   text-align: center;
 }
-.toggle-button,
+
 .reset-button {
+  height: 50px;
+}
+
+.reset-button,
+.toggle-button {
   background-color: var(--primary-color);
   border: none;
   border-radius: 5px;
