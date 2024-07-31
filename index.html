@@ -1,193 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Job Listings</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-  <!-- Item Start -->
-  Photosnap
-  New!
-  Featured
-  Senior Frontend Developer
-  1d ago
-  Full Time
-  USA only
-  <!-- Role -->
-  Frontend
-  <!-- Level -->
-  Senior
-  <!-- Languages -->
-  HTML
-  CSS
-  JavaScript
-  <!-- Item End -->
+    <title>Frontend Mentor | Job Listings</title>
 
-  <!-- Item Start -->
-  Manage
-  New!
-  Featured
-  Fullstack Developer
-  1d ago
-  Part Time
-  Remote
-  <!-- Role -->
-  Fullstack
-  <!-- Level -->
-  Midweight
-  <!-- Languages -->
-  Python
-  <!-- Tools -->
-  React
-  <!-- Item End -->
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+        margin-bottom: 5%;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Job Listings</h1>
+    </header>
+    <form class="filters" aria-labelledby="filters-heading">
+      <div class="filter-category">
+        <h3>Role</h3>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="role"
+            name="role"
+            type="radio"
+            value="Any"
+            checked
+          />
+          <span>Any</span>
+        </label>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="role"
+            name="role"
+            type="radio"
+            value="Frontend"
+          />
+          <span>Frontend</span>
+        </label>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="role"
+            name="role"
+            type="radio"
+            value="Backend"
+          />
+          <span>Backend</span>
+        </label>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="role"
+            name="role"
+            type="radio"
+            value="Fullstack"
+          />
+          <span>Fullstack</span>
+        </label>
+      </div>
 
-  <!-- Item Start -->
-  Account
-  New!
-  Junior Frontend Developer
-  2d ago
-  Part Time
-  USA only
-  <!-- Role -->
-  Frontend
-  <!-- Level -->
-  Junior
-  <!-- Languages -->
-  JavaScript
-  <!-- Tools -->
-  React
-  Sass
-  <!-- Item End -->
+      <div class="filter-category">
+        <h3>Level</h3>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="level"
+            name="level"
+            type="radio"
+            value="Any"
+            checked
+          />
+          <span>Any</span>
+        </label>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="level"
+            name="level"
+            type="radio"
+            value="Junior"
+          />
+          <span>Junior</span>
+        </label>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="level"
+            name="level"
+            type="radio"
+            value="Midweight"
+          />
+          <span>Midweight</span>
+        </label>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="level"
+            name="level"
+            type="radio"
+            value="Senior"
+          />
+          <span>Senior</span>
+        </label>
+      </div>
 
-  <!-- Item Start -->
-  MyHome
-  Junior Frontend Developer
-  5d ago
-  Contract
-  USA only
-  <!-- Role -->
-  Frontend
-  <!-- Level -->
-  Junior
-  <!-- Languages -->
-  CSS
-  JavaScript
-  <!-- Item End -->
+      <div class="filter-category">
+        <h3>Languages</h3>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="languages"
+            type="checkbox"
+            value="Python"
+          />
+          <span>Python</span>
+        </label>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="languages"
+            type="checkbox"
+            value="Ruby"
+          />
+          <span>Ruby</span>
+        </label>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="languages"
+            type="checkbox"
+            value="JavaScript"
+          />
+          <span>JavaScript</span>
+        </label>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="languages"
+            type="checkbox"
+            value="HTML"
+          />
+          <span>HTML</span>
+        </label>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="languages"
+            type="checkbox"
+            value="CSS"
+          />
+          <span>CSS</span>
+        </label>
+      </div>
 
-  <!-- Item Start -->
-  Loop Studios
-  Software Engineer
-  1w ago
-  Full Time
-  Worldwide
-  <!-- Role -->
-  Fullstack
-  <!-- Level -->
-  Midweight
-  <!-- Languages -->
-  JavaScript
-  Ruby
-  <!-- Tools -->
-  Sass
-  <!-- Item End -->
+      <div class="filter-category">
+        <h3>Tools</h3>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="tools"
+            type="checkbox"
+            value="React"
+          />
+          <span>React</span>
+        </label>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="tools"
+            type="checkbox"
+            value="Sass"
+          />
+          <span>Sass</span>
+        </label>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="tools"
+            type="checkbox"
+            value="Vue"
+          />
+          <span>Vue</span>
+        </label>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="tools"
+            type="checkbox"
+            value="Django"
+          />
+          <span>Django</span>
+        </label>
+        <label>
+          <input
+            class="filter"
+            data-filter-type="tools"
+            type="checkbox"
+            value="RoR"
+          />
+          <span>RoR (Ruby on Rails)</span>
+        </label>
+      </div>
 
-  <!-- Item Start -->
-  FaceIt
-  Junior Backend Developer
-  2w ago
-  Full Time
-  UK only
-  <!-- Role -->
-  Backend
-  <!-- Level -->
-  Junior
-  <!-- Languages -->
-  Ruby
-  <!-- Tools -->
-  RoR
-  <!-- Item End -->
+      <button class="reset-button" type="reset">Reset All Filters</button>
+    </form>
 
-  <!-- Item Start -->
-  Shortly
-  Junior Developer
-  2w ago
-  Full Time
-  Worldwide
-  <!-- Role -->
-  Frontend
-  <!-- Level -->
-  Junior
-  <!-- Languages -->
-  HTML
-  JavaScript
-  <!-- Tools -->
-  Sass
-  <!-- Item End -->
+    <main id="job-listings">
+      <!-- Job listings will be dynamically added here -->
+    </main>
 
-  <!-- Item Start -->
-  Insure
-  Junior Frontend Developer
-  2w ago
-  Full Time
-  USA only
-  <!-- Role -->
-  Frontend
-  <!-- Level -->
-  Junior
-  <!-- Languages -->
-  JavaScript
-  <!-- Tools -->
-  Vue
-  Sass
-  <!-- Item End -->
+    <script type="module" src="./scripts/displayJobs.js"></script>
+    <script type="module" src="./scripts/fetchJobs.js"></script>
+    <script type="module" src="./scripts/filterJobs.js"></script>
+    <script type="module" src="./scripts/main.js"></script>
 
-  <!-- Item Start -->
-  Eyecam Co.
-  Full Stack Engineer
-  3w ago
-  Full Time
-  Worldwide
-  <!-- Role -->
-  Fullstack
-  <!-- Level -->
-  Midweight
-  <!-- Languages -->
-  JavaScript
-  Python
-  <!-- Tools -->
-  Django
-  <!-- Item End -->
-
-  <!-- Item Start -->
-  The Air Filter Company
-  Front-end Dev
-  1mo ago
-  Part Time
-  Worldwide
-  <!-- Role -->
-  Frontend
-  <!-- Level -->
-  Junior
-  <!-- Languages -->
-  JavaScript
-  <!-- Tools -->
-  React
-  Sass
-  <!-- Item End -->
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="https://github.com/ammarabdohOptimum">Ammar Abdoh</a>.
+    </div>
+  </body>
 </html>
