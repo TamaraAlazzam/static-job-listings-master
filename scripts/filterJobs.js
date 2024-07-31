@@ -26,7 +26,7 @@ export function applyFilters() {
     filterCriteria[type].push(filter.value);
   });
 
-  updateFilterIcons(filterCriteria); // Update filter icons
+  updateFilterIcons(filterCriteria);
 
   const filteredJobs = jobs.filter((job) => {
     const roleMatch =
@@ -66,5 +66,5 @@ export function resetFilters() {
     radio.checked = true;
   });
 
-  applyFilters(); // Reapply filters to update the display
+  applyFilters();
 }

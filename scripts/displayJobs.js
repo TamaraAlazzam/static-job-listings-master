@@ -37,17 +37,45 @@ export function displayJobs(jobs) {
           </div>
         </div>
         <div class="job-tags">
-          <span class="job-role">${job.role}</span>
-          <span class="job-level">${job.level}</span>
+          <span class="job-role job-tag">${job.role}</span>
+          <span class="job-level job-tag">${job.level}</span>
           ${job.languages
-            .map((lang) => `<span class="job-language">${lang}</span>`)
+            .map((lang) => `<span class="job-language job-tag">${lang}</span>`)
             .join("")}
           ${job.tools
-            .map((tool) => `<span class="job-tool">${tool}</span>`)
+            .map((tool) => `<span class="job-tool job-tag">${tool}</span>`)
             .join("")}
         </div>
       `;
 
     jobListings.appendChild(jobCard);
   });
+
+  document.querySelectorAll(".job-tag").forEach((tag) => {
+    tag.addEventListener("click", handleTagClick);
+  });
+}
+
+function handleTagClick(event) {
+  const tag = event.target;
+  const tagType = tag.classList.contains("job-role")
+    ? "role"
+    : tag.classList.contains("job-level")
+    ? "level"
+    : tag.classList.contains("job-language")
+    ? "languages"
+    : tag.classList.contains("job-tool")
+    ? "tools"
+    : null;
+
+  if (tagType) {
+    const tagValue = tag.textContent.trim();
+    const filterSelector = `input[data-filter-type="${tagType}"][value="${tagValue}"]`;
+    const filterInput = document.querySelector(filterSelector);
+
+    if (filterInput) {
+      filterInput.checked = true;
+      filterInput.dispatchEvent(new Event("change"));
+    }
+  }
 }

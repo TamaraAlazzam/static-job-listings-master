@@ -3,35 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
-
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
-
     <title>Frontend Mentor | Job Listings</title>
-
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-    <style>
-      .attribution {
-        font-size: 11px;
-        text-align: center;
-        margin-bottom: 5%;
-      }
-      .attribution a {
-        color: hsl(228, 45%, 44%);
-      }
-    </style>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
       <h1>Job Listings</h1>
     </header>
-    <form class="filters" aria-labelledby="filters-heading">
+    <button class="toggle-button" type="button">Toggle Filters</button>
+
+    <form
+      id="filters-form"
+      class="filters hidden"
+      aria-labelledby="filters-heading"
+    >
       <div class="filter-category">
         <h3>Role</h3>
         <label>
@@ -223,7 +214,9 @@
       <button class="reset-button" type="reset">Reset All Filters</button>
     </form>
 
-    <div class="icon-tags"></div>
+    <div class="icon-tags">
+      <!-- Icon tags will be dynamically added here -->
+    </div>
 
     <main id="job-listings">
       <!-- Job listings will be dynamically added here -->
@@ -233,6 +226,7 @@
     <script type="module" src="./scripts/fetchJobs.js"></script>
     <script type="module" src="./scripts/filterJobs.js"></script>
     <script type="module" src="./scripts/main.js"></script>
+    <script type="module" src="./scripts/toggleFilters.js"></script>
 
     <div class="attribution">
       Challenge by
