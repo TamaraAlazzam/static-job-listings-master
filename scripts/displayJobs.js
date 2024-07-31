@@ -3,7 +3,7 @@ export function displayJobs(jobs) {
   jobListings.innerHTML = "";
 
   if (jobs.length === 0) {
-    const noItemsMessage = document.createElement("dic");
+    const noItemsMessage = document.createElement("div");
     noItemsMessage.classList.add("no-items");
     noItemsMessage.textContent = "No items found";
     jobListings.appendChild(noItemsMessage);

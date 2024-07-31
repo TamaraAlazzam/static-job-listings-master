@@ -144,11 +144,10 @@ h1 {
 }
 
 .no-items {
-  display: block;
-  text-align: center;
-  padding: 20px;
-  font-size: 36px;
   color: #333;
+  font-size: 36px;
+  padding: 20px;
+  text-align: center;
 }
 
 .reset-button {
