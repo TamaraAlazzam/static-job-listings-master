@@ -1,190 +1,308 @@
-*{
-    padding: 0;
-    margin: 0;
-    font-family: "League Spartan", sans-serif;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "League Spartan", sans-serif;
+  box-sizing: border-box;
 }
 
-body{
-    background-color: #f0fafb;
+:root {
+  --dark-grey: #2b3a37;
+  --grey: #56a7a1;
+  --light-grey: #f0fafb;
+  --mid-grey: #5da5a4;
+  --very-light-grey: #f0f6f6;
 }
 
-.top
-{
-    width: 100%;
-    height: 200px;
-    background-image: url("/images/bg-header-desktop.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #5da5a4;
+body {
+  background-color: var(--light-grey);
 }
 
-.jobs{
-    width: 80%;
-    margin: auto;
+.top {
+  background-color: var(--mid-grey);
+  background-image: url("/images/bg-header-desktop.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 200px;
+  width: 100%;
 }
 
-.item{
-    position: relative;
-    margin-top: 30px;
-    background-color: white;
-    max-width: calc(100% - 30px);
-    padding: 30px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+.home-container {
+  margin: auto;
+  width: 80%;
 }
 
-.item-content{
-
-}
-
-.featured-item::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 5px;
-    background-color: #5da5a4;
+.filter-tab {
+  /* flex-wrap: wrap; */
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: -60px;
+  max-width: 100%;
+  min-height: 100%;
+  overflow: visible;
+  padding: 30px;
+  position: relative;
+  box-shadow: 10px 10px 15px rgba(128, 128, 128, 0.116) ;
 
 }
 
-.left{
-    display: flex;
-    /* justify-content: space-between; */
+.left {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 80%;
 }
 
-.company-image{
-    height: 90px;
+.filter-tag {
+  height: 100%;
+  background-color: var(--very-light-grey);
+  border-radius: 5px 0 0 5px;
+  color: var(--grey);
+  font-weight: bold;
+  margin-right: 50px;
+  margin-top: 10px;
+  padding: 15px;
+  position: relative;
+  text-transform: capitalize;
 }
 
-.content{
-    width: 100%;
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+.filter-tag::after {
+  background-color: var(--grey);
+  border-radius: 0 5px 5px 0;
+  color: white;
+  content: "x";
+  padding: 15px;
+  position: absolute;
+  right: -40px;
+  top: 0;
+  transition: background-color 0.2s ease; /* Ensure transition is applied */
 }
 
-.company-status{
-    color: #56a7a1;
-    font-weight: bolder;
-    font-size: 16px;
+.filter-tag:hover {
+  cursor: pointer;
+}
+.clear-filter-btn {
+  background-color: transparent;
+  border: none;
+  color: var(--grey);
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px;
+  text-transform: capitalize;
 }
 
-.company-status span{
-    margin-left: 10px;
-    font-size: 15px;
-    text-transform: uppercase;
-    background-color: #56a7a1;
-    padding: 5px 10px;
-    border-radius: 20px;
-    color: white;
-    display: inline-block;
+.filter-tag:hover::after {
+  background-color: var(--dark-grey);
+  cursor: pointer;
 }
 
-.company-status .new{
-    background-color: #56a7a1;
+.clear-filter-btn:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
-.company-status .featured-span{
-    background-color: #2b3a37;
+.item {
+  align-items: start;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 50px;
+  max-width: 100%;
+  min-height: 250px;
+  overflow: visible;
+  padding: 30px;
+  position: relative;
+  box-shadow: 10px 10px 15px rgba(128, 128, 128, 0.116) ;
 }
 
+.featured-item::before {
+  background-color: var(--mid-grey);
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 5px;
+}
 
+.company-image {
+  height: 60px;
+  margin-top: -60px;
+}
 
-.job-title{
-    font-size: 25px;
-    font-weight: 700;
-    color: #2b3a37;
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 100px;
+  width: 100%;
+}
+
+.company-status {
+  color: var(--grey);
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.company-status span {
+  background-color: var(--grey);
+  border-radius: 20px;
+  color: white;
+  display: inline-block;
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 5px 12px;
+  text-transform: uppercase;
+}
+
+.company-status .new {
+  background-color: var(--grey);
+}
+
+.company-status .featured-span {
+  background-color: var(--dark-grey);
+}
+
+.job-title {
+  color: var(--dark-grey);
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .job-about {
-    color: #56a7a1;
-    font-size: 17px;
-    font-weight: 500;
+  color: var(--grey);
+  font-size: 17px;
+  font-weight: 500;
 }
 
-.tags{
-    display: flex;
+hr {
+  background-color: var(--grey);
+  border: none;
+  height: 1px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.tags {
+  align-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tags .tag {
+  background-color: var(--very-light-grey);
+  border-radius: 5px;
+  color: var(--grey);
+  font-weight: bold;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 15px;
+  text-transform: capitalize;
+}
+
+.tag:hover {
+  background-color: var(--grey);
+  color: var(--very-light-grey);
+  cursor: pointer;
+}
+
+/* Phone */
+@media only screen and (max-width: 325px) {
+  .filter-tab {
     flex-wrap: wrap;
-    justify-content: space-between;
+  }
 }
 
-.tags .tag{
-    background-color: #f0f6f6;
-    color: #56a7a1;
-    padding: 10px;
+/* Tablets*/
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .item {
+        align-items: center;
+        flex-direction: row;
+        min-height: 0px;
+        overflow: hidden;
+      }
+    
+      .company-image {
+        margin-top: 0;
+        height: 100px;
+      }
+    
+      .content {
+        justify-content: space-around;
+        margin-left: 30px;
+        width: 60%;
+      }
+    
+      hr {
+        display: none;
+      }
+    
+      .tags {
+        min-height: 85px;
+        /* margin-bottom: 15px; */
+        align-content: space-around;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: end;
+        width: 60%;
+        
+      }
+    
+      .tags .tag {
+        border-radius: 5px;
+        font-weight: bold;
+        margin-top: 0;
+        padding: 10px;
+        text-transform: capitalize;
+        margin-top: 0;
+      }
+    
+}
+
+/* Desktops */
+@media only screen and (min-width: 1025px) {
+  .item {
+    align-items: center;
+    flex-direction: row;
+    min-height: 0px;
+    overflow: hidden;
+  }
+
+  .company-image {
+    margin-top: 0;
+    height: 100px;
+  }
+
+  .content {
+    justify-content: space-around;
+    margin-left: 30px;
+    width: 60%;
+  }
+
+  hr {
+    display: none;
+  }
+
+  .tags {
+    align-content: flex-end;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: end;
+    width: 80%;
+  }
+
+  .tags .tag {
     border-radius: 5px;
     font-weight: bold;
+    margin-top: 0;
+    padding: 10px;
     text-transform: capitalize;
-
+    margin-top: 0;
+  }
 }
-
-
-/* @media only screen and (max-width: 767px) {
-    .item{
-        margin-top: 50px;
-        min-height: 250px;
-    }
-
-    .item-content{
-        flex-direction: column;
-        align-items: start;
-        max-height: 200px;
-
-    }
-
-    .left{
-        flex-direction: column;
-        min-height: 150px;
-        justify-content: space-between;
-    }
-
-    .content{       
-        margin-left: 0;
-        width: 100%;
-        min-height: 80px;
-    }
-
-    .item-content{
-        margin-top: -65px;
-    }
-
-    .company-image{
-
-        height: 70px;
-        width: 70px;
-    }
-
-    .tags{
-        align-content: space-between;
-    }
-
-    .company-status span{
-        display: inline-block;
-    }
-
-    hr{
-        margin: 20px 0;
-        width: 100%;
-        border-color: #56a7a1;
-    }
-
-    .company-status span{
-        font-size: 12px;
-    }
-
-    
-}
-
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-    
-}
-
-@media only screen and (min-width: 1025px) {
-    
-} */
