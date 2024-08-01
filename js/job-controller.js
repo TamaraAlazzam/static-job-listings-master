@@ -1,81 +1,81 @@
 import Job from "./job.js";
 
-export default class Home {
-   #filter = [];
-   #jobs = [];
-   #filteredJobs = [];
+export default class JobController {
+  #activeFilters = [];
+  #allJobs = [];
+  #displayedJobs = [];
 
-  constructor() {}
+  // html elements
+  #jobsDiv;
+  #filterTab;
+  #filterContainer;
 
-   addJob(job) {
-    this.#jobs.push(job);
+  constructor() {
+    this.#jobsDiv = document.querySelector(".jobs");
+    this.#filterTab = document.querySelector(".filter-tab");
+    this.#filterContainer = document.querySelector(".filter-tab .left");
+  }
 
-    this.loadHome();
-}
+  addJobToList(job) {
+    this.#allJobs.push(job);
+    this.updateJobDisplay();
+  }
 
-   removeFilter(filterTag) {
-    const index = this.#filter.indexOf(filterTag);
+  removeFilterTag(filterTag) {
+    const index = this.#activeFilters.indexOf(filterTag);
     if (index > -1) {
-      this.#filter.splice(index, 1);
+      this.#activeFilters.splice(index, 1);
     }
-    this.loadHome();
+    this.updateJobDisplay();
   }
 
-   addFilter(filterTag) {
-    if (!this.#filter.includes(filterTag)) {
-      this.#filter.push(filterTag);
+  addFilterTag(filterTag) {
+    if (!this.#activeFilters.includes(filterTag)) {
+      this.#activeFilters.push(filterTag);
     }
-    console.log(this.#filter);
-    this.loadHome();
+    this.updateJobDisplay();
   }
 
-   clearFilters() {
-    this.#filter = [];
-    this.loadHome();
+  clearAllFilters() {
+    this.#activeFilters = [];
+    this.updateJobDisplay();
   }
 
-   loadHome() {
-    this.#filterJobs();
-    this.#displayJobs();
-    this.#displayFilters();
+  updateJobDisplay() {
+    this.#applyFilters();
+    this.renderDisplayedJobs();
+    this.#updateFilterDisplay();
   }
 
-   #displayJobs() {
-    let jobsDiv = document.querySelector(".jobs");
-    jobsDiv.innerHTML = "";
-    for (let job of this.#filteredJobs) {
-      let jobItem = this.#createJobItemElement(job);
-      jobsDiv.appendChild(jobItem);
+  renderDisplayedJobs() {
+    this.#jobsDiv.innerHTML = "";
+    for (let job of this.#displayedJobs) {
+      let jobItem = this.#createJobCardElement(job);
+      this.#jobsDiv.appendChild(jobItem);
     }
   }
 
-   #filterJobs() {
-    if (this.#filter.length == 0) {
-      this.#filteredJobs = this.#jobs;
+  #applyFilters() {
+    if (this.#activeFilters.length === 0) {
+      this.#displayedJobs = this.#allJobs;
     } else {
-      this.#filteredJobs = this.#jobs.filter((job) =>
-        this.#filter.every((filterItem) => job.tags.includes(filterItem))
+      this.#displayedJobs = this.#allJobs.filter((job) =>
+        this.#activeFilters.every((filterItem) => job.tags.includes(filterItem))
       );
     }
   }
 
-   #displayFilters() {
-    let filterTab = document.querySelector(".filter-tab");
-    if (this.#filter < 1) {
-      filterTab.style.display = "none";
-    } else {
-      filterTab.style.display = "flex";
-    }
-
-    let jobsDiv = document.querySelector(".filter-tab .left");
-    jobsDiv.innerHTML = "";
-    for (let filter of this.#filter) {
+  #updateFilterDisplay() {
+    this.#filterTab.style.display =
+      this.#activeFilters.length < 1 ? "none" : "flex";
+    this.#filterContainer.innerHTML = "";
+    for (let filter of this.#activeFilters) {
       let filterItem = this.#createFilterTagElement(filter);
-      jobsDiv.append(filterItem);
+      this.#filterContainer.append(filterItem);
     }
   }
 
-   #createJobItemElement(job) {
+  #createJobCardElement(job) {
     const itemDiv = document.createElement("div");
     itemDiv.classList.add("item");
     if (job.featured) {
@@ -94,7 +94,6 @@ export default class Home {
     companyStatusDiv.className = "company-status";
     companyStatusDiv.innerHTML = job.company + " ";
 
-    console.log(job.isNew);
     if (job.isNew) {
       companyStatusDiv.innerHTML += `<span class="new">New!</span>`;
     }
@@ -136,10 +135,10 @@ export default class Home {
     return itemDiv;
   }
 
-   #createFilterTagElement(filter) {
-    let filterTag = document.createElement("div");
-    filterTag.classList.add("filter-tag");
-    filterTag.textContent = filter;
-    return filterTag;
+  #createFilterTagElement(filterTag) {
+    let filterTagElement = document.createElement("div");
+    filterTagElement.classList.add("filter-tag");
+    filterTagElement.textContent = filterTag;
+    return filterTagElement;
   }
 }

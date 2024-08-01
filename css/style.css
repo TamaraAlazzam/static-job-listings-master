@@ -45,8 +45,7 @@ body {
   overflow: visible;
   padding: 30px;
   position: relative;
-  box-shadow: 10px 10px 15px rgba(128, 128, 128, 0.116) ;
-
+  box-shadow: 10px 10px 15px rgba(128, 128, 128, 0.116);
 }
 
 .left {
@@ -118,7 +117,7 @@ body {
   overflow: visible;
   padding: 30px;
   position: relative;
-  box-shadow: 10px 10px 15px rgba(128, 128, 128, 0.116) ;
+  box-shadow: 10px 10px 15px rgba(128, 128, 128, 0.116);
 }
 
 .featured-item::before {
@@ -139,6 +138,7 @@ body {
 .content {
   display: flex;
   flex-direction: column;
+  margin-left: 1vh;
   justify-content: space-evenly;
   min-height: 100px;
   width: 100%;
@@ -152,12 +152,12 @@ body {
 
 .company-status span {
   background-color: var(--grey);
-  border-radius: 20px;
+  border-radius: 7px;
   color: white;
   display: inline-block;
   font-size: 14px;
   margin-right: 10px;
-  padding: 5px 12px;
+  padding: 8px;
   text-transform: uppercase;
 }
 
@@ -173,6 +173,9 @@ body {
   color: var(--dark-grey);
   font-size: 20px;
   font-weight: 700;
+}
+.job-title:hover {
+    color: var(--grey);
 }
 
 .job-about {
@@ -213,7 +216,7 @@ hr {
 }
 
 /* Phone */
-@media only screen and (max-width: 325px) {
+@media only screen and (max-width: 481px) {
   .filter-tab {
     flex-wrap: wrap;
   }
@@ -221,48 +224,43 @@ hr {
 
 /* Tablets*/
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-    .item {
-        align-items: center;
-        flex-direction: row;
-        min-height: 0px;
-        overflow: hidden;
-      }
-    
-      .company-image {
-        margin-top: 0;
-        height: 100px;
-      }
-    
-      .content {
-        justify-content: space-around;
-        margin-left: 30px;
-        width: 60%;
-      }
-    
-      hr {
-        display: none;
-      }
-    
-      .tags {
-        min-height: 85px;
-        /* margin-bottom: 15px; */
-        align-content: space-around;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: end;
-        width: 60%;
-        
-      }
-    
-      .tags .tag {
-        border-radius: 5px;
-        font-weight: bold;
-        margin-top: 0;
-        padding: 10px;
-        text-transform: capitalize;
-        margin-top: 0;
-      }
-    
+  .item {
+    align-items: center;
+    flex-direction: row;
+    min-height: 0px;
+    overflow: hidden;
+  }
+
+  .company-image {
+    margin-top: 0;
+    height: 100px;
+  }
+
+  .content {
+    justify-content: space-around;
+  }
+
+  hr {
+    display: none;
+  }
+
+  .tags {
+    min-height: 85px;
+    align-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+  }
+
+  .tags .tag {
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 0;
+    padding: 10px;
+    text-transform: capitalize;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
 }
 
 /* Desktops */
@@ -281,8 +279,6 @@ hr {
 
   .content {
     justify-content: space-around;
-    margin-left: 30px;
-    width: 60%;
   }
 
   hr {
@@ -294,7 +290,6 @@ hr {
     display: flex;
     flex-wrap: nowrap;
     justify-content: end;
-    width: 80%;
   }
 
   .tags .tag {
@@ -303,6 +298,5 @@ hr {
     margin-top: 0;
     padding: 10px;
     text-transform: capitalize;
-    margin-top: 0;
   }
 }
