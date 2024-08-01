@@ -16,9 +16,7 @@ export function initializeFilters(fetchedJobs) {
   if (resetButton) {
     resetButton.addEventListener("click", () => {
       resetFilters();
-      fetchedJobs.then((jobs) => {
-        displayJobs(jobs);
-      });
+      displayJobs(jobs);
     });
   }
 }
@@ -27,23 +25,18 @@ export function applyFilters() {
   updateFilterIcons();
 
   const filteredJobs = jobs.filter((job) => {
-    const roleMatch =
-      filterCriteria.role.length === 0 ||
-      filterCriteria.role.includes(job.role);
-
-    const levelMatch =
-      filterCriteria.level.length === 0 ||
-      filterCriteria.level.includes(job.level);
-
-    const languagesMatch =
-      filterCriteria.languages.length === 0 ||
-      filterCriteria.languages.every((lang) => job.languages.includes(lang));
-
-    const toolsMatch =
-      filterCriteria.tools.length === 0 ||
-      filterCriteria.tools.every((tool) => job.tools.includes(tool));
-
-    return roleMatch && levelMatch && languagesMatch && toolsMatch;
+    return (
+      (filterCriteria.role.length === 0 ||
+        filterCriteria.role.includes(job.role)) &&
+      (filterCriteria.level.length === 0 ||
+        filterCriteria.level.includes(job.level)) &&
+      (filterCriteria.languages.length === 0 ||
+        filterCriteria.languages.every((lang) =>
+          job.languages.includes(lang)
+        )) &&
+      (filterCriteria.tools.length === 0 ||
+        filterCriteria.tools.every((tool) => job.tools.includes(tool)))
+    );
   });
 
   displayJobs(filteredJobs);

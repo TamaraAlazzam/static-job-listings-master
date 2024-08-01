@@ -1,27 +1,31 @@
 import { applyFilters, resetFilters, filterCriteria } from "./filterJobs.js";
 
+const resetIcon = createResetIcon();
 export function updateFilterIcons() {
   const iconTags = document.querySelector(".icon-tags");
   iconTags.innerHTML = "";
 
   let hasActiveFilters = false;
 
-  Object.keys(filterCriteria).forEach((type) => {
-    filterCriteria[type].forEach((value) => {
-      addFilterIcon(iconTags, value, type);
+  Object.entries(filterCriteria).forEach(([type, values]) => {
+    values.forEach((value) => {
+      const icon = createIcon(value, type);
+      iconTags.appendChild(icon);
       hasActiveFilters = true;
     });
   });
 
   if (hasActiveFilters) {
-    addResetIcon(iconTags);
+    iconTags.appendChild(resetIcon);
     iconTags.style.backgroundColor = "white";
+    iconTags.style.boxShadow = "0 8px 8px rgba(0, 0, 0, 0.1)";
   } else {
-    iconTags.style.backgroundColor = "#f0fafb";
+    iconTags.style.backgroundColor = "transparent";
+    iconTags.style.boxShadow = "";
   }
 }
 
-function addFilterIcon(container, value, type) {
+function createIcon(value, type) {
   const icon = document.createElement("div");
   icon.className = "filter-icon";
   icon.innerText = value;
@@ -34,7 +38,7 @@ function addFilterIcon(container, value, type) {
   });
 
   icon.appendChild(removeButton);
-  container.appendChild(icon);
+  return icon;
 }
 
 function removeFilter(value, type) {
@@ -45,14 +49,15 @@ function removeFilter(value, type) {
   }
 }
 
-function addResetIcon(container) {
+function createResetIcon() {
+  const resetContainer = document.createElement("div");
+  resetContainer.className = "reset-container";
+
   const resetIcon = document.createElement("div");
-  resetIcon.className = "filter-icon reset-icon";
-  resetIcon.innerText = "Reset";
+  resetIcon.className = "reset-button";
+  resetIcon.innerText = "Clear";
+  resetIcon.addEventListener("click", resetFilters);
 
-  resetIcon.addEventListener("click", () => {
-    resetFilters();
-  });
-
-  container.appendChild(resetIcon);
+  resetContainer.appendChild(resetIcon);
+  return resetContainer;
 }
