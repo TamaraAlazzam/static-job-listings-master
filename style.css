@@ -109,6 +109,11 @@
   grid-area: 3/1/4/6;
 }
 
+.position:hover {
+  cursor: pointer;
+  color: var(--Dark-Cyan);
+}
+
 .remove-filter {
   background-color: var(--Dark-Cyan);
   border-bottom-right-radius: 5px;
