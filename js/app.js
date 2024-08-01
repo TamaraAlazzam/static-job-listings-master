@@ -18,10 +18,25 @@ export const app = {
     selectedFilter: [],
     isActive: false,
   },
-  setCards: async function (data = this.data) {
+  setCards: function (data = this.data) {
     this.container.innerHTML = "";
     for (let job of this.data) {
       this.appendCard(job);
+    }
+  },
+  setFilteredCards: function (data = this.data) {
+    this.container.innerHTML = "";
+    for (let i = 0; i < this.data.length; i++) {
+      let filteringValues = [...this.data[i].languages, ...this.data[i].tools];
+      filteringValues.push(this.data[i].role);
+      filteringValues.push(this.data[i].level);
+
+      if (
+        [...new Set([...filteringValues, ...this.filterData.selectedFilter])]
+          .length == filteringValues.length
+      ) {
+        this.appendCard(this.data[i]);
+      }
     }
   },
   addFilter: function (input) {
@@ -50,55 +65,17 @@ export const app = {
     newFilterBtn.addEventListener("click", () => this.removeFilter(input));
     filterParent.appendChild(newFilterBtn);
 
-    this.container.innerHTML = "";
-    for (let i = 0; i < this.data.length; i++) {
-      let filteringValues = this.data[i].languages.concat(this.data[i].tools);
-      filteringValues.push(this.data[i].role);
-      filteringValues.push(this.data[i].level);
-
-      let isSatisfied = true;
-      for (let item of this.filterData.selectedFilter) {
-        if (!filteringValues.includes(item)) {
-          isSatisfied = false;
-          break;
-        }
-      }
-
-      if (isSatisfied) {
-        this.appendCard(this.data[i]);
-      }
-    }
+    this.setFilteredCards();
   },
   removeFilter: function (input) {
-    if(this.filterData.selectedFilter.length == 1) this.clearFilter();
+    if (this.filterData.selectedFilter.length == 1) return this.clearFilter();
+
     let inputIndex = this.filterData.selectedFilter.indexOf(input);
     this.filterData.selectedFilter.splice(inputIndex, 1);
     let filtersParent = document.getElementById("filters");
-    for (let child of filtersParent.children) {
-      if (child.children[0].innerHTML == input) {
-        console.log(child);
-        filtersParent.removeChild(child);
-        break;
-      }
-    }
-    this.container.innerHTML = "";
-    for (let i = 0; i < this.data.length; i++) {
-      let filteringValues = this.data[i].languages.concat(this.data[i].tools);
-      filteringValues.push(this.data[i].role);
-      filteringValues.push(this.data[i].level);
+    filtersParent.removeChild(filtersParent.children[inputIndex]);
 
-      let isSatisfied = true;
-      for (let item of this.filterData.selectedFilter) {
-        if (!filteringValues.includes(item)) {
-          isSatisfied = false;
-          break;
-        }
-      }
-
-      if (isSatisfied) {
-        this.appendCard(this.data[i]);
-      }
-    }
+    this.setFilteredCards();
   },
   appendCard: function (obj) {
     let card = document.createElement("div");
@@ -127,20 +104,22 @@ export const app = {
     filters.className = "filters";
     card.appendChild(filters);
 
-    let roleFilter = document.createElement("span");
-    roleFilter.setAttribute("data-filter", "role");
-    roleFilter.className = "filter";
-    roleFilter.innerHTML = obj.role;
-    roleFilter.addEventListener("click", (event) => this.addFilter(obj.role));
-    filters.appendChild(roleFilter);
+    this.appendRoleFilter(filters, obj);
+    this.appendLevelFilter(filters, obj);
+    this.appendLanguagesFilters(filters, obj);
+    this.appendToolsFilters(filters, obj);
 
-    let levelFilter = document.createElement("span");
-    levelFilter.setAttribute("data-filter", "level");
-    levelFilter.className = "filter";
-    levelFilter.innerHTML = obj.level;
-    levelFilter.addEventListener("click", (event) => this.addFilter(obj.level));
-    filters.appendChild(levelFilter);
-
+    this.container.appendChild(card);
+  },
+  clearFilter: function () {
+    this.filterData.isActive = false;
+    this.filterData.selectedFilter = [];
+    this.filterCard.children[0].innerHTML = "";
+    this.filterCard.classList.add("hidden");
+    this.container.style.paddingTop = "20px";
+    this.setCards();
+  },
+  appendLanguagesFilters: function (filters, obj) {
     for (let j = 0; j < obj.languages.length; j++) {
       let languageFilter = document.createElement("span");
       languageFilter.setAttribute("data-filter", "language");
@@ -151,6 +130,8 @@ export const app = {
       );
       filters.appendChild(languageFilter);
     }
+  },
+  appendToolsFilters: function (filters, obj) {
     for (let j = 0; j < obj.tools.length; j++) {
       let toolFilter = document.createElement("span");
       toolFilter.setAttribute("data-filter", "tool");
@@ -161,14 +142,21 @@ export const app = {
       );
       filters.appendChild(toolFilter);
     }
-    this.container.appendChild(card);
   },
-  clearFilter: function() {
-    this.filterData.isActive = false;
-    this.filterData.selectedFilter = [];
-    this.filterCard.children[0].innerHTML = '';
-    this.filterCard.classList.add('hidden');
-    this.container.style.paddingTop = '20px';
-    this.setCards();
-  }
+  appendRoleFilter: function (filters, obj) {
+    let roleFilter = document.createElement("span");
+    roleFilter.setAttribute("data-filter", "role");
+    roleFilter.className = "filter";
+    roleFilter.innerHTML = obj.role;
+    roleFilter.addEventListener("click", (event) => this.addFilter(obj.role));
+    filters.appendChild(roleFilter);
+  },
+  appendLevelFilter: function (filters, obj) {
+    let levelFilter = document.createElement("span");
+    levelFilter.setAttribute("data-filter", "level");
+    levelFilter.className = "filter";
+    levelFilter.innerHTML = obj.level;
+    levelFilter.addEventListener("click", (event) => this.addFilter(obj.level));
+    filters.appendChild(levelFilter);
+  },
 };
