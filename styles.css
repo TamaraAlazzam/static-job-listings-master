@@ -3,13 +3,12 @@
     --white:  White;
     --blue: #164966;
     --lightBlue: #f0f7f8;
-    --turquise: #5da5a4;
+    --turquise: #4c9796;
     --darkBlue: rgb(1, 68, 85);
     --blackShadow: rgba(0, 0, 0, 0.3);
     --grey: #999;
-
-
 }
+
 body {
     align-items: center;
     background-color: var(--lightBlue) ;
@@ -28,6 +27,9 @@ body {
     font-size: 18px;
     
   }
+  .clear:hover{
+    color: var(--turquise);
+  }
 
   .company-name {
     align-items: center;
@@ -35,8 +37,8 @@ body {
   }
   
   .company-name h2 {
-    color: var(--blue);
-    font-size: 20px;
+    color: var(--turquise);
+    font-size: 18px;
     margin: 0;
   }
   
@@ -68,10 +70,11 @@ body {
   }
 
   .filter-tags{
-    background-color: var(--white);
     display: flex;
     flex-direction: row;
     justify-content: start;
+    flex-wrap: wrap;
+    
   }
 
   .header{
@@ -99,7 +102,7 @@ body {
   }
 
   .job-listing:active{
-    border-left: 10px solid var(--darkBlue) ;
+    border-left: 5px solid var(--turquise) ;
   }
   
   .job-listing img {
@@ -118,6 +121,8 @@ body {
 
   .job-filter{
     background-color: var(--white);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px var(--blackShadow);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -127,11 +132,16 @@ body {
 
 
   .job-details h3 {
+    font-size: 17px;
     margin: 5px 0;
+  }
+  .job-details h3:hover{
+    color: var(--turquise);
   }
   
   .job-details p {
     color: var(--grey);
+    font-size: 17px;
     margin: 5px 0;
   }
 
@@ -149,7 +159,7 @@ body {
  
   .tags{
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
 
   }
   
@@ -170,13 +180,40 @@ body {
 
   
 
-  @media only screen and (max-width: 942px) {
+  @media only screen and (max-width: 616px) {
+    .company-name{
+      font-size: 10px;
+      margin-left: -20px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .company-name h2{
+      font-size: 15px;
+    }
+    .company-name span{
+      font-size: 10px;
+    }
+    
+    .job-details h3{
+      font-size: 13px;
+      margin-left: -20px;
+    }
+    .job-details p{
+      font-size: 13px;
+      margin-left: -20px;
+
+    }
     .job-listing{
         flex-direction: column;
     }
-    .tags, .roles, .languages{
-        flex-direction: column;
+    .tags{
+        display: flex;
+        flex-wrap: wrap;
     }
+    .tag:hover{
+      background-color: var(--darkBlue);
+    }
+  
     .job-listing{
         align-items: start;
 
