@@ -37,7 +37,6 @@ body {
     width: 800px;
     height: 100px;
     margin-top: -50px;
-
 }
 
 .search_bar {
@@ -61,11 +60,8 @@ body {
 .search_bar button {
     font-weight: 600;
     color: white;
-    font-size: large;
-    width: fit-content;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
+    font-size: larger;
+    border: 1px solid transparent;
     background-color: var(--parimary-color);
 }
 
@@ -74,26 +70,25 @@ body {
 }
 
 .search_bar span {
-    border: 1px solid transparent;
-    display: inline-block;
-    text-align: center;
-    width: fit-content;
     font-weight: 600;
     padding: 5px;
-    border-radius: 5px;
     background-color: var(--background-color);
     color: var(--parimary-color);
+}
+
+.filter_buttons {
+    background-color: var(--background-color);
+    margin: 5px;
 }
 
 .specialities button {
     font-weight: 600;
     color: var(--parimary-color);
-    width: fit-content;
     border: none;
     border-radius: 5px;
     padding: 10px;
     background-color: var(--background-color);
-    margin-left: 5px;
+    margin: 5px;
 }
 
 .specialities button:hover {
@@ -103,7 +98,6 @@ body {
 }
 
 .container {
-
     padding-top: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -120,7 +114,6 @@ body {
     border-radius: 5px;
     margin: 10px;
     padding: 15px;
-    height: 120px;
     background-color: var(--filtertable-color);
 }
 
@@ -130,21 +123,14 @@ body {
 
 .job-cards img {
     padding: 5px;
-    margin: 5px;
+    margin-right: 10px;
 }
 
 .job-cards .specialities {
-    width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-}
-
-.job-cards .information {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
 }
 
 h3:hover {
@@ -155,6 +141,7 @@ h3:hover {
 .company {
     color: var(--parimary-color);
     font-weight: 600;
+    padding: 5px;
 }
 
 .primary_span {
@@ -182,16 +169,19 @@ h3:hover {
     font-weight: 600;
 }
 
-@media (max-width: 465px) {
+.heading {
+    display: flex;
+}
+
+@media (max-width: 650px) {
     .nav {
         background-image: url("/images/bg-header-mobile.svg");
         width: 100%;
     }
 
     .container {
-
         padding-top: 50px;
-        width: 400px;
+        width: fit-content;
     }
 
     .job-cards {
@@ -202,11 +192,10 @@ h3:hover {
 
     .job-cards img {
         padding: inherit;
-        margin-top: -100px;
+        margin-top: -80px;
     }
 
     .job-cards .information {
-        margin-top: -45px;
         margin-bottom: 15px;
         display: block;
     }
@@ -219,9 +208,5 @@ h3:hover {
 
     .search_container {
         width: 325px;
-    }
-
-    .specialities button {
-        margin: 5px;
     }
 }

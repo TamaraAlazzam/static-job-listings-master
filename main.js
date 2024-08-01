@@ -1,9 +1,10 @@
 const container = document.createElement("div");
 container.classList.add("container");
-document.body.append(container);
-let selected_words = [];
 let search_bar = document.getElementById("search_bar");
 let search_container = document.getElementById("search_container");
+document.body.append(container);
+let selected_words = [];
+
 let fetchedData = [];
 
 async function fetchData() {
@@ -105,7 +106,7 @@ function filter(input) {
   }
   search_container.style.display = "flex";
   selected_words.forEach((word) => {
-    word_buttons += `<div><span>${word}</span><button class="filterbutton" onclick="item_clear('${word}')">X</button></div>`;
+    word_buttons += `<div class="filter_buttons" ><span>${word}</span><button class="filterbutton" onclick="item_clear('${word}')">X</button></div>`;
   });
   search_bar.innerHTML = word_buttons;
   filter_data(fetchedData, selected_words);
