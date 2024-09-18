@@ -1,0 +1,166 @@
+:root {
+  --backgroundWhite: white;
+  --boxShadowColor: rgba(0, 0, 0, 0.1);
+  --fontColor: #5ba4a4;
+  --mainColor: #eef2f7;
+  --secondaryColor: #2b2d2f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.mainHeader {
+  background-color: var(--fontColor);
+  width: 100%;
+  height: 100px;
+  margin-top: 0%;
+}
+
+.mainHeader ul {
+  display: flex;
+}
+
+.mainHeader li {
+  display: flex;
+}
+
+body {
+  background-color: var(--mainColor);
+  margin: 0;
+  padding: 0;
+}
+
+#jobListings {
+  margin: 40px auto;
+  width: 80%;
+}
+
+.jobListing {
+  align-items: center;
+  background-color: var(--backgroundWhite);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px var(--boxShadowColor);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.jobListing:hover {
+  border-left: 5px solid var(--fontColor);
+}
+
+.jobHeader {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.companyInfo {
+  align-items: center;
+  display: flex;
+}
+
+.companyInfo strong {
+  color: var(--fontColor);
+  font-size: 18px;
+}
+
+.companyInfo .badge {
+  background-color: var(--fontColor);
+  border-radius: 20px;
+  color: white;
+  font-size: 12px;
+  margin-left: 10px;
+  padding: 5px 10px;
+}
+
+.badge.featured {
+  background-color: #2b2d2f;
+}
+
+.position strong {
+  font-size: 16px;
+}
+
+.metaInfo {
+  color: #7b7f83;
+  font-size: 14px;
+}
+
+.jobDetails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tags .tag {
+  background-color: var(--mainColor);
+  border-radius: 5px;
+  color: var(--secondaryColor);
+  font-size: 16px;
+  margin: 5px 5px 0 0;
+  padding: 5px 10px;
+}
+
+.tag:hover {
+  background-color: var(--fontColor);
+}
+
+.mainHeader {
+  align-items: center;
+  background-color: var(--fontColor);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 100%;
+}
+
+.mainHeader ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  margin: 40px auto;
+  padding: 0;
+  width: 80%;
+}
+
+.mainHeader li {
+  background-color: var(--backgroundWhite);
+  border-radius: 5px;
+  color: var(--secondaryColor);
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 5px 10px;
+}
+
+.mainHeader li:hover {
+  background-color: var(--mainColor);
+  color: var(--fontColor);
+}
+
+.mainHeader li.active {
+  background-color: var(--mainColor);
+  color: var(--fontColor);
+}
+
+#clearFilters {
+  background-color: #f44336;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+}
+
+#clearFilters:hover {
+  background-color: #d32f2f;
+  text-decoration: underline;
+}
